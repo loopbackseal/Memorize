@@ -10,26 +10,42 @@ import SwiftUI
 struct ContentView: View {
     var emojis: Array<String> = ["🚙", "🚒", "🚀", "🛰", "🚌", "🚓", "🛸", "🚁", "🛶"]
     
-    @State var emojiCount = 4
+    @State var emojiCount = 9
     
     var body: some View {
         VStack {
-            LazyVGrid(columns: [GridItem(.adaptive(minimum: 65))]) {
-                ForEach(emojis[0..<emojiCount], id: \.self, content : { emoji in
-                    CardView(content: emoji).aspectRatio(2/3, contentMode: .fit)
-                })
+            Text("Memorize!")
+                .font(.largeTitle)
+            VStack {
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: 65))]) {
+                    ForEach(emojis[0..<emojiCount], id: \.self, content : { emoji in
+                        CardView(content: emoji).aspectRatio(2/3, contentMode: .fit)
+                    })
+                }
+//                Spacer()
+//                HStack {
+//                    remove
+//                    Spacer()
+//                    add
+//                }
+//                .font(.largeTitle)
+//                .padding(.horizontal)
             }
+            .padding(.horizontal)
+            .foregroundColor(.red)
             Spacer()
             HStack {
-                remove
                 Spacer()
-                add
+                ThemeButton(name: "car", labelText: "Theme 1")
+                Spacer()
+                ThemeButton(name: "globe.asia.australia", labelText: "Theme 2")
+                Spacer()
+                ThemeButton(name: "person", labelText: "Theme 3")
+                Spacer()
             }
             .font(.largeTitle)
             .padding(.horizontal)
         }
-        .padding(.horizontal)
-        .foregroundColor(.red)
     }
     
     var remove: some View {
@@ -52,6 +68,24 @@ struct ContentView: View {
         }
     }
 }
+
+struct ThemeButton: View {
+    var name: String
+    var labelText: String
+    
+    var body: some View {
+        Button {
+            print(name)
+        } label: {
+            VStack {
+            Image(systemName: name)
+            Text(labelText)
+                    .font(.footnote)
+            }
+        }
+    }
+}
+
 
 struct CardView: View {
     var content: String
@@ -78,9 +112,7 @@ struct CardView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .preferredColorScheme(.dark)
-.previewInterfaceOrientation(.portrait)
-        ContentView()
-            .preferredColorScheme(.light)
+//        ContentView()
+//            .preferredColorScheme(.light)
     }
 }
