@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     var emojis: Array<String> = ["🚙", "🚒", "🚀", "🛰", "🚌", "🚓", "🛸", "🚁", "🛶"]
+    var theme2Emojis: Array<String> = ["🏴‍☠️"]
     
     @State var emojiCount = 9
     
