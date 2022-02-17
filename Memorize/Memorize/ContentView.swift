@@ -49,7 +49,6 @@ struct ContentView: View {
             .padding(.horizontal)
         }
     }
-    
 //    var remove: some View {
 //        Button {
 //            if emojiCount > 1 {
@@ -99,6 +98,8 @@ struct CardView: View {
                 shape.fill().foregroundColor(.white)
                 shape.stroke(lineWidth: 3)
                 Text(card.content).font(.largeTitle)
+            } else if card.isMatched {
+                shape.opacity(0)
             } else {
                 shape.fill()
             }
